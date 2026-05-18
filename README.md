@@ -5,18 +5,23 @@
 </p>
 
 <p align="center">
+  🌐 Live Demo: 
   <a href="https://check-politician.streamlit.app/" target="_blank">
-    🌐 Live Demo: https://check-politician.streamlit.app/
+    https://check-politician.streamlit.app/
   </a>
 </p>
 
----
+<p align="center">
+  <a href="https://check-politician.streamlit.app/" target="_blank">
+    <img src="https://img.shields.io/badge/🚀%20Open%20App-Streamlit-green?style=for-the-badge" />
+  </a>
+</p>
 
 <p align="center">
   <img src="./images/image_1.png" width="85%" />
 </p>
 
-## 📌 Про проєкт
+## Про проєкт
 
 **Rhetoric Proximity** — це інноваційна платформа для кількісного аналізу політичної риторики в українському медіапросторі.
 
@@ -24,11 +29,10 @@
 
 Система аналізує тексти (Telegram-пости, Facebook, офіційні заяви) та автоматично визначає ідеологічні та риторичні маркери.
 
----
 
-## 🚀 Можливості системи
+## Можливості системи
 
-### 1. 📊 Аналіз політиків (Dashboard)
+### 1. Аналіз політиків (Dashboard)
 
 Порівняння динаміки кількох політичних діячів одночасно на інтерактивних графіках.
 
@@ -38,9 +42,8 @@
   <img src="./images/image_21.png" width="32%" />
 </p>
 
----
 
-### 2. 🧠 Explainability (Розбір контексту)
+### 2. Explainability (Розбір контексту)
 
 - Вивід першоджерел постів за обрану дату  
 - Підсвічування токенів відповідно до впевненості моделі  
@@ -50,9 +53,8 @@
   <img src="./images/image_3.png" width="85%" />
 </p>
 
----
 
-### 3. ⚡ Runtime Inference (Аналіз тексту)
+### 3. Runtime Inference (Аналіз тексту)
 
 Миттєва оцінка будь-якого тексту з автоматичним виділенням ключових ознак.
 
@@ -62,9 +64,8 @@
   <img src="./images/image_43.png" width="32%" />
 </p>
 
----
 
-### 4. 🔎 Vocabulary Analysis
+### 4. Vocabulary Analysis
 
 - Аналіз семантичного та ідеологічного значення слова  
 - Частота використання різними політиками  
@@ -76,9 +77,8 @@
   <img src="./images/image_53.png" width="32%" />
 </p>
 
----
 
-## 📊 Аналізовані спектри (метрики)
+## Аналізовані спектри (метрики)
 
 Кожен текст оцінюється за шкалою **0.0 → 1.0**:
 
@@ -89,20 +89,18 @@
 - **Популізм** — “народ vs еліти”, антикорупційна риторика  
 - **Ліберально-плюралістична рамка** — права людини, свободи, децентралізація  
 
----
 
-## 🧠 Архітектура моделі
+## Архітектура моделі
 
-### 🔧 Стек технологій
+### Стек технологій
 
 - **Frontend/UI:** Streamlit (сучасна версія з динамічним layout)
 - **Ембедери:** SentenceTransformer  
   (`paraphrase-multilingual-mpnet-base-v2`)
 - **Модель:** MultiOutputRegressor + Ridge Regression (L2)
 
----
 
-### 🧬 Потенційна production-архітектура
+### Потенційна production-архітектура
 
 Для fine-tuning передбачено використання **Ukrainian RoBERTa**:
 
@@ -110,14 +108,12 @@ $$
 \text{Text} \rightarrow \text{Ukrainian RoBERTa} \rightarrow \text{Embedding (768)} \rightarrow \text{Dropout} \rightarrow \text{Linear (768→256)} + ReLU \rightarrow \text{Linear (256→5)} + Sigmoid \rightarrow [p_1, p_2, p_3, p_4, p_5]
 $$
 
----
 
 ### 📦 Датасет
 
 > ⚠️ MVP-версія моделі навчена на **синтетичних даних**, згенерованих через OpenAI API.  
 > 10% датасету було вручну перевірено та скориговано відповідно до експертних гайдів розмітки.
 
----
 
 ## 💻 Локальний запуск
 
@@ -128,7 +124,6 @@ git clone https://github.com/your-username/rhetoric-proximity.git
 cd rhetoric-proximity
 ```
 
----
 
 ### 2. Створення середовища
 
@@ -146,7 +141,6 @@ python -m venv venv
 venv\Scripts\activate
 ```
 
----
 
 ### 3. Встановлення залежностей
 
@@ -160,7 +154,6 @@ pip install -r requirements.txt
 pip install streamlit pandas numpy sentence-transformers scikit-learn plotly joblib
 ```
 
----
 
 ### 4. Структура проєкту
 
@@ -175,7 +168,6 @@ rhetoric-proximity/
     └── ...
 ```
 
----
 
 ### 5. Запуск застосунку
 
@@ -186,15 +178,7 @@ streamlit run app.py
 Після запуску відкрийте:
 `http://localhost:8501`
 
----
 
-## 🌐 Демо
-
-👉 **Live application:**
-[https://check-politician.streamlit.app/](https://check-politician.streamlit.app/)
-
----
-
-## 📄 Ліцензія
+## Ліцензія
 
 Проєкт створений для дослідницьких та освітніх цілей.
