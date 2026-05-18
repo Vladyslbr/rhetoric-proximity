@@ -13,8 +13,8 @@ import re
 # ==========================================
 # 1. НАЛАШТУВАННЯ СТОРІНКИ ТА СЛОВНИКІВ
 # ==========================================
-st.set_page_config(page_title="Political Spectrum Tracker", layout="wide", page_icon="🏛️")
-st.title("🏛️ Political Spectrum Tracker (MVP)")
+st.set_page_config(page_title="Аналіз політичних текстів діячів", layout="wide", page_icon="🏛️")
+st.title("🏛️ Аналіз політичних текстів діячів")
 
 # Словник для відображення назв осей українською мовою
 AXIS_TRANSLATION = {
@@ -157,7 +157,7 @@ with tab1:
             )
 
             st.markdown("---")
-            interval_options = {"День": "D", "Тиждень": "W", "Місяць": "M"} 
+            interval_options = {"День": "D", "Тиждень": "W", "Місяць": "ME"} 
             selected_interval_label = st.selectbox("Інтервал графіка:", list(interval_options.keys()), index=1)
             resample_rule = interval_options[selected_interval_label]
             
@@ -200,7 +200,7 @@ with tab1:
                     # Замінюємо англійські назви підграфіків на українські
                     fig_timeline.for_each_annotation(lambda a: a.update(text=AXIS_TRANSLATION.get(a.text.split("=")[-1], a.text.split("=")[-1])))
                     
-                    st.plotly_chart(fig_timeline, use_container_width=True)
+                    st.plotly_chart(fig_timeline, width="stretch")
                 
                 # 2. Розбір контексту з підсвічуванням
                 st.markdown("---")
@@ -257,7 +257,7 @@ with tab1:
                     showlegend=True,
                     margin=dict(l=40, r=40, t=20, b=20)
                 )
-                st.plotly_chart(fig_radar, use_container_width=True)
+                st.plotly_chart(fig_radar, width="stretch")
 
 # --- ТАБ 2: АНАЛІЗАТОР ТЕКСТІВ (RUNTIME) ---
 with tab2:
@@ -288,7 +288,7 @@ with tab2:
                         marker=dict(color='#d62728')
                     ))
                     fig_res_radar.update_layout(polar=dict(radialaxis=dict(visible=True, range=[0, 1])))
-                    st.plotly_chart(fig_res_radar, use_container_width=True)
+                    st.plotly_chart(fig_res_radar, width="stretch")
 
                 # ==========================================
                 # ДОДАНО: Підсвічування слів для введеного тексту
@@ -350,14 +350,14 @@ with tab3:
                     marker=dict(color='#2ca02c' if selected_kw_person == "Усі політики" else '#ff7f0e')
                 ))
                 fig_kw_radar.update_layout(polar=dict(radialaxis=dict(visible=True, range=[0, 1])), showlegend=False)
-                st.plotly_chart(fig_kw_radar, use_container_width=True)
+                st.plotly_chart(fig_kw_radar, width="stretch")
                 
             with k_col2:
                 st.write("**Хто найчастіше використовує це слово:**")
                 person_counts = kw_df['person'].value_counts().reset_index()
                 person_counts.columns = ['Політик', 'Кількість згадок']
                 fig_bar = px.bar(person_counts, x='Політик', y='Кількість згадок', template="plotly_white")
-                st.plotly_chart(fig_bar, use_container_width=True)
+                st.plotly_chart(fig_bar, width="stretch")
             
             st.subheader("Останні контекстні згадки:")
             kw_clean = kw_df.dropna(subset=['date']).sort_values('date', ascending=False)
